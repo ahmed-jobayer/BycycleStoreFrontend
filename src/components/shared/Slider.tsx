@@ -19,13 +19,13 @@ const Slider: React.FC<ApiResponseWithIsPending> = ({ data, isPending }) => {
   // If the data is still loading
   if (isPending) return <Loading />;
 
-  return (
+  return ( 
     <Carousel
       autoplay={{ dotDuration: true }}
       autoplaySpeed={1500}
       arrows={true}
       fade={true}
-      className="min-w-full min-h-[55vh] bg-gradient-to-r from-blue-400 to-purple-600 rounded-4xl"
+      className="min-w-full min-h-[55vh] bg-gradient-to-r from-green to-white rounded-4xl"
     >
       {data?.result &&
         data?.result.map &&

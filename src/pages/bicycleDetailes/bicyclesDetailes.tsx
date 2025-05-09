@@ -15,7 +15,7 @@ const BicyclesDetailPage = () => {
   if (isLoading) return <Skeleton active />;
   if (error) return <p className="text-red-500">Something went wrong!</p>;
   return (
-    <div className="mx-auto p-6 font-sans shadow-2xl shadow-purple-600 rounded-4xl">
+    <div className="mx-auto p-6 font-sans shadow-xl shadow-purple-600 rounded-4xl">
       {/* Product Image and Details Section */}
       <Row gutter={24}>
         {/* Left Column: Product Image */}

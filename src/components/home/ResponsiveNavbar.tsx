@@ -118,19 +118,19 @@ const ResponsiveNavbar = () => {
   // mobile sidebar
   const mobileSidebarLinks = (
     <ul className="items-start gap-[20px] text-[1rem] flex flex-col">
-      <li className="hover:text-[#3B9DF8] transition-all duration-300 capitalize cursor-pointer">
+      <li className=" transition-all duration-300 capitalize cursor-pointer">
         <NavLink to="/" className={activeLink}>
           Home
         </NavLink>
       </li>
 
-      <li className="hover:text-[#3B9DF8] transition-all duration-300 capitalize cursor-pointer">
+      <li className=" transition-all duration-300 capitalize cursor-pointer">
         <NavLink to="/AllBicycles" className={activeLink}>
           All Bicycle
         </NavLink>
       </li>
 
-      <li className="hover:text-[#3B9DF8] transition-all duration-300 capitalize cursor-pointer">
+      <li className=" transition-all duration-300 capitalize cursor-pointer">
         <NavLink to="/about" className={activeLink}>
           About Us
         </NavLink>
@@ -139,13 +139,13 @@ const ResponsiveNavbar = () => {
       {/* Terms Mobile Dropdown */}
       <li
         onClick={() => setMobileAboutUsOpen(!mobileAboutUsOpen)}
-        className="hover:text-[#3B9DF8] group transition-all duration-500 cursor-pointer capitalize flex items-center gap-[10px]"
+        className=" group transition-all duration-500 cursor-pointer capitalize flex items-center gap-[10px]"
       >
         Terms & Conditions
         <IoIosArrowDown
           className={`${
             mobileAboutUsOpen ? "rotate-[180deg]" : "rotate-0"
-          } text-white group-hover:text-[#3B9DF8] transition-all duration-300`}
+          } text-white  transition-all duration-300`}
         />
       </li>
 
@@ -258,7 +258,7 @@ const ResponsiveNavbar = () => {
         />
         <button
           type="submit"
-          className="hidden md:flex text-white absolute end-[5px] cursor-pointer bottom-[5px] bg-darkGrey   rounded-lg text-sm px-2 py-1"
+          className="hidden md:flex text-white absolute end-[5px] cursor-pointer bottom-[5px] bg-green   rounded-lg text-sm px-2 py-1"
         >
           Search
         </button>
@@ -305,7 +305,7 @@ const ResponsiveNavbar = () => {
               mobileSidebarOpen
                 ? "translate-x-0 opacity-100 z-20"
                 : "translate-x-[200px] opacity-0 z-[-1] hidden"
-            } md:hidden bg-gradient-to-bl from-blue-500 via-accent-foreground to-purple-500 text-white! boxShadow p-4 text-center absolute top-[65px] right-0 sm:w-[300px] w-full rounded-md transition-all duration-300 shadow-purple-600 shadow-lg`}
+            } md:hidden bg-gradient-to-bl from-gdarkGreen to-green boxShadow p-4 text-center absolute top-[65px] right-0 sm:w-[300px] w-full rounded-md transition-all duration-300  shadow-lg`}
           >
             {mobileSidebarLinks}
           </aside>

@@ -129,7 +129,7 @@ const Checkout = () => {
       <ResponsiveNavbar />
      <div className="min-h-screen container mx-auto space-y-6 sm:space-y-8 lg:space-y-12 sm:px-6 px-4 lg:px-8">
 
-      <div className="w-full min-h-[55vh] rounded-4xl shadow-purple-600 shadow-2xl my-10 p-10">
+      <div className="w-full min-h-[55vh] rounded-4xl shadow-purple-600 shadow-xl my-10 p-10">
         {product && (
           <div className="w-full mx-auto">
             {/* <img src= alt="" className="hidden md:flex"/> */}

@@ -6,10 +6,10 @@ const PrivacyPolicy: React.FC = () => {
    <div className="w-full">
       {/* navbar */}
       <ResponsiveNavbar />
- <div className="min-h-screen container mx-auto space-y-6 sm:space-y-8 lg:space-y-12 sm:px-6 px-4 lg:px-8">
+ <div className="min-h-screen container mx-auto space-y-6 sm:space-y-8 lg:space-y-12 p-2">
 
       {/* policies */}
-      <div className="max-w-5xl mx-auto bg-white p-10 rounded-4xl shadow-purple-600 shadow-2xl relative">
+      <div className=" mx-auto bg-white p-10 rounded-4xl  shadow-xl relative">
                 
         {/* back to terms page */}
         <Link 
@@ -21,7 +21,7 @@ const PrivacyPolicy: React.FC = () => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-9 text-purple-600 absolute left-8 top-12 hover:text-blue-600"
+            className="size-9 text-gdarkGreen absolute left-8 top-12 hover:text-blue-600"
           >
             <path
               strokeLinecap="round"

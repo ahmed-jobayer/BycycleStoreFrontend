@@ -18,7 +18,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-white shadow-md rounded-t-2xl w-full p-3 md:p-4 relative shadow-purple-600 2xl:h-[30vh]">
+    <footer className="bg-white w-full p-3 md:p-4 relative  2xl:h-[30vh]">
       <div className="w-full flex items-center justify-center pt-[30px] flex-col gap-[20px] pb-[130px]">
         {/* motto */}
         <h3 className="text-2xl font-semibold font-serif">
@@ -29,7 +29,7 @@ const Footer = () => {
         <img
           src={logo}
           alt="logo"
-          className="w-[5rem] border-2 border-purple-600 rounded-full"
+          className="w-[5rem] border-2 border-green rounded-full"
         />
 
         <p className="text-[0.9rem] text-center sm:text-start text-gray-600">
@@ -82,7 +82,7 @@ const Footer = () => {
 
         {/* go to top */}
         <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-          <SlArrowUp className="p-2 rounded-full border border-purple-600 cursor-pointer text-[2rem] text-purple-600 hover:bg-blue-400 hover:scale-110" />
+          <SlArrowUp className="p-2 rounded-full border border-lightGrey cursor-pointer text-[2rem] text-purple-600 hover:bg-blue-400 hover:scale-110" />
         </button>
       </div>
 

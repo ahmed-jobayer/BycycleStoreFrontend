@@ -55,18 +55,19 @@ const ItemsCard: React.FC<ItemsCardProps> = ({ data, isPending }) => {
   const actions: React.ReactNode[] = [
     <>
       <CustomButton
+      className="w-[90%] !py-2 hover:scale-95 transition-transform duration-300"
+      
         handleAnything={(e) => {
           e.preventDefault(); //  Prevent <Link> default nav
           e.stopPropagation(); //  Prevents the Link from triggering / event bubbling
           navigate(`/checkout/${_id}`);
         }}
         textName={
-          <div className="flex gap-1 justify-content-center items-center">
+          <div className="flex gap-1 justify-content-center items-center ">
             <FcMoneyTransfer />
             BuyNow
           </div>
         }
-        className="w-[90%] !py-2"
       />
     </>,
   ];
@@ -77,7 +78,7 @@ const ItemsCard: React.FC<ItemsCardProps> = ({ data, isPending }) => {
         gap="middle"
         align="start"
         vertical
-        className="hover:shadow-blue-600 shadow-2xl hover:scale-105 rounded-2xl"
+        className="shadow-xl rounded-2xl"
       >
         {/* <Switch
           checked={!loading}

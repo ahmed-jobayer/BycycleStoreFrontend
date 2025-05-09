@@ -28,13 +28,13 @@ const Testimonial = () => {
   ];
 
   return (
-    <div className="w-full min-h-[55vh] rounded-4xl! shadow-purple-600 shadow-2xl">
+    <div className="w-full min-h-[55vh] rounded-4xl! shadow-xl">
       <Carousel
         autoplay
         autoplaySpeed={2000}
         arrows
         fade
-        className="min-w-full min-h-[55vh] bg-gradient-to-r from-blue-400 to-purple-600 rounded-4xl"
+        className="min-w-full min-h-[55vh]  rounded-4xl"
       >
         {testimonials.map((testimonial, index) => (
           <section
@@ -42,7 +42,7 @@ const Testimonial = () => {
             className="relative isolate overflow-hidden bg-transparent px-6 py-24 sm:py-32 lg:px-8 rounded-4xl w-full min-h-[55vh]!"
           >
             <div className="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,var(--color-indigo-100),white)] opacity-20"></div>
-            <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white ring-1 shadow-xl shadow-indigo-600/10 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center"></div>
+            <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-gradient-to-r from-gdarkGreen to-white ring-1 shadow-xl shadow-indigo-600/10 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center"></div>
 
             <div className="mx-auto max-w-2xl lg:max-w-4xl text-center">
               <img
@@ -56,7 +56,7 @@ const Testimonial = () => {
                 </blockquote>
                 <figcaption className="mt-10">
                   <div className="mt-4 flex items-center justify-center space-x-3 text-base">
-                    <div className="font-semibold text-fuchsia-900">
+                    <div className="font-semibold text-gdarkGreen">
                       {testimonial.name}
                     </div>
                     <svg
@@ -68,7 +68,7 @@ const Testimonial = () => {
                     >
                       <circle cx="1" cy="1" r="1" />
                     </svg>
-                    <div className="text-fuchsia-600">{testimonial.title}</div>
+                    <div className="text-green">{testimonial.title}</div>
                   </div>
                 </figcaption>
               </figure>

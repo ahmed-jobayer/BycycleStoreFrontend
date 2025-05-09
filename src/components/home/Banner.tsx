@@ -9,7 +9,7 @@ const Banner = () => {
 
   // axios hook
   const axiosCommon = useAxiosCommon();
-
+ 
   // fetching the featured Bicycles
   const { isPending, data } = useQuery({
     queryKey: ["featuredBicycles"],
@@ -39,7 +39,7 @@ const Banner = () => {
   if (isPending) return <Loading />;
 
   return (
-    <div className="w-full min-h-[55vh] rounded-4xl shadow-purple-600 shadow-2xl">
+    <div className="w-full min-h-[55vh] rounded-4xl  shadow-xl">
       <Slider data={data} isPending={isPending}/>
     </div>
   );

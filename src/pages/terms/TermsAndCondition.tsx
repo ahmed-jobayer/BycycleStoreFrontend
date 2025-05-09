@@ -7,10 +7,10 @@ const TermsAndCondition: React.FC = () => {
     <div className="w-full">
       {/* navbar */}
       <ResponsiveNavbar />
-      <div className="min-h-screen container mx-auto space-y-6 sm:space-y-8 lg:space-y-12 sm:px-6 px-4 lg:px-8">
+      <div className="min-h-screen container mx-auto space-y-6 sm:space-y-8 lg:space-y-12 p-2">
 
       {/* Terms */}
-      <div className="max-w-5xl mx-auto bg-white p-10 rounded-4xl shadow-purple-600 shadow-2xl">
+      <div className=" mx-auto bg-white p-10 rounded-4xl  shadow-xl">
         <h1 className="text-4xl font-extrabold text-center mb-10 text-green-700">
           Terms & Conditions
         </h1>

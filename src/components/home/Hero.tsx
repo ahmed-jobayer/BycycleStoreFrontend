@@ -11,10 +11,10 @@ const Hero = () => {
       section.scrollIntoView({ behavior: "smooth" });
     }
   }
-
+ 
   return (
     <div
-      className="w-full min-h-[55vh] rounded-4xl shadow-purple-600 shadow-2xl"
+      className="w-full min-h-[55vh] rounded-4xl  shadow-xl"
     >
       {/* header */}
       <header className="flex h-full lg:flex-row flex-col gap-[50px] lg:gap-0 justify-center items-center lg:mt-3">
