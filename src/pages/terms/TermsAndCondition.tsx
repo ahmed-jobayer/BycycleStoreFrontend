@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 
 const TermsAndCondition: React.FC = () => {
   return (
-    <div className="min-h-screen container mx-auto space-y-6 sm:space-y-8 lg:space-y-12 sm:px-6 px-4 lg:px-8">
+    <div className="w-full">
       {/* navbar */}
       <ResponsiveNavbar />
+      <div className="min-h-screen container mx-auto space-y-6 sm:space-y-8 lg:space-y-12 sm:px-6 px-4 lg:px-8">
 
       {/* Terms */}
       <div className="max-w-5xl mx-auto bg-white p-10 rounded-4xl shadow-purple-600 shadow-2xl">
@@ -102,6 +103,7 @@ const TermsAndCondition: React.FC = () => {
           <p className="text-sm text-gray-500">Last updated: April 12, 2025</p>
         </div>
       </div>
+    </div>
     </div>
   );
 };

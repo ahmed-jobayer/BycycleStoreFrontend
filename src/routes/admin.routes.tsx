@@ -10,7 +10,7 @@ export const adminPaths = [
   {
     name: "My Dashboard",
     path: "my-dashboard",
-    element: <AdminDashboardLandingpage />,
+    element: <AdminDashboardLandingpage />, 
   },
   {
     name: "Manage Profile",

@@ -3,7 +3,17 @@
 
 @custom-variant dark (&:is(.dark *));
 
+
+
 @theme inline {
+
+
+  --color-green: #45b44d;
+  --color-gdarkGreen: #368c3c;
+  --color-offWhite: #f8f8f8;
+  --color-lightGrey: #CCCCCC;
+  --color-darkGrey: #444444;
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);

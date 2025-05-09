@@ -7,7 +7,7 @@ import ScrollToTop from "./routes/ScrollToTop";
 function App() {
   const dispatch = useAppDispatch();
 
-  // Auto-Login Using Stored Token
+  // Auto-Login Using Stored Token 
   useEffect(() => {
     const token =
       localStorage.getItem("authToken") || sessionStorage.getItem("authToken");

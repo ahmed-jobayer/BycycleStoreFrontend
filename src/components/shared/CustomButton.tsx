@@ -17,7 +17,6 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   className = "",
   disabled = false,
   type = "button", // default value for 'type'
-  
 }) => {
   return (
     <button

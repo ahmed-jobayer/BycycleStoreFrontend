@@ -15,6 +15,7 @@ import logo from "../../assets/images/logo/logo.png";
 import { logout, useCurrentUser } from "../../redux/features/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import CustomButton from "../shared/CustomButton";
+import { Search, ShoppingCart } from "lucide-react";
 // import { MdDashboard } from "react-icons/md";
 
 const ResponsiveNavbar = () => {
@@ -55,47 +56,29 @@ const ResponsiveNavbar = () => {
   const toDashboard = user ? `/dashboard/${user?.role}/my-dashboard` : "/";
 
   // NavLink is active
-  // NavLink is active
   const activeLink = ({ isActive }: { isActive: boolean }) => {
     return isActive
-      ? "text-[#3B9DF8] font-medium transition-all duration-300"
-      : "text-[#424242] hover:text-[#3B9DF8] transition-all duration-300";
+      ? "text-[#000] font-medium transition-all duration-300"
+      : "text-[#f8f8f8] hover:text-[#000] transition-all duration-300";
   };
 
   // reusable menu block
   const termsLinks = (
     <>
-      <li className="flex items-center gap-[7px] hover:text-[#3B9DF8] transition-all duration-300">
+      <li className="flex items-center gap-[7px] transition-all duration-300">
         <BsArrowRight className="text-[0.9rem]" />
         <NavLink to="/terms" end className={activeLink}>
-          Terms
+          <span className="text-black">Terms</span>
         </NavLink>
       </li>
-      <li className="flex items-center gap-[7px] hover:text-[#3B9DF8] transition-all duration-300">
+      <li className=" w-full flex items-center gap-[7px] transition-all duration-300">
         <BsArrowRight className="text-[0.9rem]" />
         <NavLink to="/terms/policies" className={activeLink}>
-          Policies
+          <span className="text-black">Privacy Policies</span>
         </NavLink>
       </li>
     </>
   );
-
-  // const featuresList = (
-  //   <>
-  //     <div className="flex items-center gap-[10px] text-[1rem] text-[#424242]">
-  //       <MdDashboardCustomize className="bg-blue-200 text-blue-900 p-1.5 rounded-full text-[2rem]" />
-  //       Legal Support
-  //     </div>
-  //     <div className="flex items-center gap-[10px] text-[1rem] text-[#424242]">
-  //       <CgIfDesign className="bg-orange-200 text-orange-800 p-1.5 rounded-full text-[2rem]" />
-  //       Clear Policies
-  //     </div>
-  //     <div className="flex items-center gap-[10px] text-[1rem] text-[#424242]">
-  //       <FaCubesStacked className="bg-yellow-200 text-yellow-800 p-1.5 rounded-full text-[2rem]" />
-  //       Transparent Structure
-  //     </div>
-  //   </>
-  // );
 
   /* desktop nav links */
   const desktopNavLinks = (
@@ -106,7 +89,7 @@ const ResponsiveNavbar = () => {
         </NavLink>
       </li>
 
-      <li className="transition-all duration-500 cursor-pointer hover:text-[#3B9DF8] capitalize">
+      <li className="  transition-all duration-500 cursor-pointer hover:text-[#3B9DF8] ">
         <NavLink to="/AllBicycles" className={activeLink}>
           All Bicycle
         </NavLink>
@@ -118,21 +101,15 @@ const ResponsiveNavbar = () => {
         </NavLink>
       </li>
 
-      <li className="transition-all duration-500 cursor-pointer dark:text-[#abc2d3] hover:text-[#3B9DF8] capitalize flex items-center gap-[3px] group relative">
+      <li className="transition-all duration-500 cursor-pointer dark:text-[#abc2d3]  capitalize flex items-center gap-[3px] group relative">
         Terms & Conditions
-        <MdKeyboardArrowDown className="text-[1.5rem] text-black group-hover:text-[#3B9DF8] transition-all duration-500 group-hover:rotate-[180deg]" />
-        <article className="p-6 bg-white rounded-md boxShadow w-[200px] absolute top-[40px] z-[-1] dark:bg-slate-800 group-hover:translate-y-0 translate-y-[-20px] group-hover:opacity-100 opacity-0 group-hover:z-30 transition-all duration-300 shadow-purple-600 shadow-lg">
-          <div className="grid grid-cols-2">
-            <ul className="flex flex-col gap-[7px] text-black">{termsLinks}</ul>
-            {/* <div className="flex flex-col gap-[10px] dark:border-slate-700 border-l border-[#e5eaf2] pl-[30px]">
-              {featuresList}
-            </div> */}
+        <MdKeyboardArrowDown className="text-[1.5rem] text-black  transition-all duration-500 group-hover:rotate-[180deg]" />
+        <article className="p-4  bg-white rounded-md boxShadow w-[200px] absolute top-[40px] z-[-1] dark:bg-slate-800 group-hover:translate-y-0 translate-y-[-20px] group-hover:opacity-100 opacity-0 group-hover:z-30 transition-all duration-300 shadow-lightGrey shadow-lg">
+          <div className="grid grid-cols-2 ">
+            <ul className="flex flex-col gap-[7px] text-black  w-max ">
+              {termsLinks}
+            </ul>
           </div>
-          {/* <img
-            src="https://i.ibb.co/YRgsrsh/AD22-04.png"
-            alt="image"
-            className="w-full object-cover mt-4 rounded-sm h-[150px]"
-          /> */}
         </article>
       </li>
     </ul>
@@ -188,7 +165,7 @@ const ResponsiveNavbar = () => {
         <CustomButton textName="Login" handleAnything={handleLogin} />
       ) : (
         <div
-          className="flex items-center gap-[10px] cursor-pointer relative"
+          className="flex items-center gap-1 cursor-pointer relative"
           onClick={() => setAccountMenuOpen(!accountMenuOpen)}
         >
           <div className="relative">
@@ -200,9 +177,9 @@ const ResponsiveNavbar = () => {
             <div className="w-[10px] h-[10px] rounded-full bg-green-500 absolute bottom-[0px] right-0 border-2 border-white"></div>
           </div>
 
-          <h1 className="text-[1rem] font-[400] text-gray-600 sm:block hidden">
+          {/* <h1 className="text-[1rem] font-[400] text-gray-600 sm:block hidden">
             {user.email}
-          </h1>
+          </h1> */}
 
           <div
             className={`${
@@ -253,6 +230,10 @@ const ResponsiveNavbar = () => {
           />
         </div>
       )}
+      <NavLink to="/cart">
+
+      <ShoppingCart />
+      </NavLink>
 
       <CiMenuFries
         onClick={() => setMobileSidebarOpen(!mobileSidebarOpen)}
@@ -261,40 +242,75 @@ const ResponsiveNavbar = () => {
     </div>
   );
 
-  return (
-    <nav className="flex items-center justify-between w-full relative h-auto shadow-md p-4 bg-base-100 border-purple-600 shadow-purple-600 rounded-4xl">
-      <div className="flex space-x-4 ">
-        <ul className="items-center gap-[20px] text-[1rem] text-[#424242] md:flex">
-          <li className="transition-all duration-500 cursor-pointer hover:bg-[#d8e0e1] rounded-full capitalize">
-            <NavLink to="/">
-              {/* <MdDashboard className="h-20px w-20px" /> */}
-              {/* logo */}
-              <img
-                src={logo}
-                alt="logo"
-                className="w-[60px] border-2 border-purple-600 rounded-full"
-              />
-            </NavLink>
-          </li>
-        </ul>
+  const searchBox = (
+    <form className=" w-1/3 text-darkGrey">
+     
+      <div className="relative">
+        <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+        <Search />
+        </div>
+        <input
+          type="search"
+          id="default-search"
+          className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 "
+          placeholder="Search Bicycle..."
+          required
+        />
+        <button
+          type="submit"
+          className="hidden md:flex text-white absolute end-[5px] cursor-pointer bottom-[5px] bg-darkGrey   rounded-lg text-sm px-2 py-1"
+        >
+          Search
+        </button>
       </div>
+    </form>
+  );
 
-      {/* nav links */}
-      {desktopNavLinks}
+  return (
+    <nav className=" sticky top-0  z-50  w-full text-offWhite">
+      <div className="bg-gdarkGreen w-full px-2">
+        <div className="container mx-auto">
+          {/* nav links */}
+          {desktopNavLinks}
+        </div>
+      </div>
+      <div className=" bg-green px-2">
+        <div className="flex items-center justify-between w-full h-14 container mx-auto">
+          <div className="flex space-x-4 ">
+            <ul className="items-center gap-[20px] text-[1rem] text-[#424242] md:flex">
+              <li className="transition-all duration-500 cursor-pointer bg-offWhite rounded-full capitalize">
+                <NavLink to="/">
+                  {/* <MdDashboard className="h-20px w-20px" /> */}
+                  {/* logo */}
+                  <img
+                    src={logo}
+                    alt="logo"
+                    className="w-[40px] border-2 border-offWhite rounded-full"
+                  />
+                </NavLink>
+              </li>
+            </ul>
+          </div>
 
-      {/* user account login */}
-      {accountDropdown}
+          {/* nav links */}
+          {/* {desktopNavLinks} */}
+          {searchBox}
 
-      {/* mobile sidebar */}
-      <aside
-        className={` ${
-          mobileSidebarOpen
-            ? "translate-x-0 opacity-100 z-20"
-            : "translate-x-[200px] opacity-0 z-[-1] hidden"
-        } md:hidden bg-gradient-to-bl from-blue-500 via-accent-foreground to-purple-500 text-white! boxShadow p-4 text-center absolute top-[65px] right-0 sm:w-[300px] w-full rounded-md transition-all duration-300 shadow-purple-600 shadow-lg`}
-      >
-        {mobileSidebarLinks}
-      </aside>
+          {/* user account login */}
+          {accountDropdown}
+
+          {/* mobile sidebar */}
+          <aside
+            className={` ${
+              mobileSidebarOpen
+                ? "translate-x-0 opacity-100 z-20"
+                : "translate-x-[200px] opacity-0 z-[-1] hidden"
+            } md:hidden bg-gradient-to-bl from-blue-500 via-accent-foreground to-purple-500 text-white! boxShadow p-4 text-center absolute top-[65px] right-0 sm:w-[300px] w-full rounded-md transition-all duration-300 shadow-purple-600 shadow-lg`}
+          >
+            {mobileSidebarLinks}
+          </aside>
+        </div>
+      </div>
     </nav>
   );
 };

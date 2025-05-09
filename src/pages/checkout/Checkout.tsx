@@ -48,7 +48,7 @@ const Checkout = () => {
     formState: { errors, isSubmitting },
   } = useForm({
     defaultValues: {
-      quantity: 1,
+      quantity: 1, 
     },
   });
 
@@ -124,9 +124,10 @@ const Checkout = () => {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="min-h-screen container mx-auto space-y-6 sm:space-y-8 lg:space-y-12 sm:px-6 px-4 lg:px-8">
+   <div className="w-full">
       {/* navbar */}
       <ResponsiveNavbar />
+     <div className="min-h-screen container mx-auto space-y-6 sm:space-y-8 lg:space-y-12 sm:px-6 px-4 lg:px-8">
 
       <div className="w-full min-h-[55vh] rounded-4xl shadow-purple-600 shadow-2xl my-10 p-10">
         {product && (
@@ -199,6 +200,7 @@ const Checkout = () => {
         )}
       </div>
     </div>
+   </div>
   );
 };
 

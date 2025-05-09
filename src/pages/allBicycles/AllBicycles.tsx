@@ -22,6 +22,8 @@ const AllBicycles = () => {
   const meta = data?.data?.meta;
   const products = data?.data?.result;
 
+  console.log(data);
+
   const handleFilterChange = (key: string, value: any) => {
     dispatch(setFilter({ [key]: value }));
     setIsFilterApplied(true);
