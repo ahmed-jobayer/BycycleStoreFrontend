@@ -17,7 +17,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className=" w-full  relative lg:h-[10vh]  2xl:h-[20vh] bg-green border">
+    <footer className=" w-full  relative lg:h-[10vh]  2xl:h-[20vh] bg-green ">
       <div className="w-full bg-gradient-to-t  from-green to-white px-2 bg-green flex items-center justify-center pt-[30px] flex-col gap-[20px] pb-[30px]">
         {/* motto */}
         <h3 className="text-2xl font-semibold font-serif">

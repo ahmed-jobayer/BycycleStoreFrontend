@@ -1,17 +1,20 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { setCity, setShippingAddress } from "@/redux/features/cart/cartSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { cities } from "@/utils/cities";
 
 
 const Address = () => {
-    // const dispatch = useAppDispatch(); 
-    // const { city, shippingAddress } = useAppSelector((state) => state.cart);
+    const dispatch = useAppDispatch(); 
+    const { city, shippingAddress } = useAppSelector((state) => state.cart);
   
-    // const handleCitySelect = (selectedCity: string) => {
-    //   dispatch(setCity(selectedCity));
-    // };
-  
-    // const handleAddressChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    //   dispatch(setShippingAddress(e.target.value));
-    // };
+    const handleCitySelect = (selectedCity: string) => {
+      dispatch(setCity(selectedCity));
+    };
+   
+    const handleAddressChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+      dispatch(setShippingAddress(e.target.value));
+    };
   
     return (
       <div className="border-2 border-white bg-background brightness-105 rounded-md col-span-4 p-5">
@@ -20,24 +23,24 @@ const Address = () => {
           <p className="text-gray-500">Enter your address.</p>
           <div className="mt-5">
             <Select 
-            // value={city} onValueChange={handleCitySelect}
+            value={city} onValueChange={handleCitySelect}
             >
               <SelectTrigger className="mb-5 w-full">
                 <SelectValue placeholder="Select a city" />
               </SelectTrigger>
               <SelectContent>
-                {/* {cities.map((city) => (
+                {cities.map((city) => (
                   <SelectItem key={city} value={city}>
                     {city}
                   </SelectItem>
-                ))} */}
+                ))}
               </SelectContent>
             </Select>
             <p className="text-sm mb-2 text-gray-500">Enter Delivery Address:</p>
             <textarea
               className="w-full border rounded-xl p-2"
-            //   value={shippingAddress}
-            //   onChange={handleAddressChange}
+              value={shippingAddress}
+              onChange={handleAddressChange}
               rows={5}
             />
           </div>

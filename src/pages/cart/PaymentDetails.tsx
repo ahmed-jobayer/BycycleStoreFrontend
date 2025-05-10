@@ -1,133 +1,138 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import CustomButton from "@/components/shared/CustomButton";
+import useAxiosCommon from "@/hooks/useAxiosCommon";
+import {
+  CartProduct,
+  orderedProductsSelector,
+  orderSelector,
+  resetCart,
+} from "@/redux/features/cart/cartSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
-// const currencyFormatter = (value: number) =>
-//     new Intl.NumberFormat("en-US", {
-//       style: "currency",
-//       currency: "BDT",
-//     }).format(value);
+const currencyFormatter = (value: number) =>
+  new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "BDT",
+  }).format(value);
 
 const PaymentDetails = () => {
- //* redux
-//  const cart = useAppSelector((state) => state.cart);
-//  const dispatch = useAppDispatch();
-//  const cartProducts = useAppSelector(orderedMedicinesSelector);
-//  const order = useAppSelector(orderSelector);
+  //* redux
+  const cart = useAppSelector((state) => state.cart);
+  const dispatch = useAppDispatch();
+  const cartProducts = useAppSelector(orderedProductsSelector);
+  const order = useAppSelector(orderSelector);
+  const [userId, setUserId] = useState("");
+  const axiosCommon = useAxiosCommon()
 
- //* user info
-//  const user = useUser();
+  //* user info
+  useEffect(() => {
+    const localUser = localStorage.getItem("userData");
+    if (localUser) {
+      const user = JSON.parse(localUser);
+      setUserId(user?._id);
+    }
+  }, []);
 
- //* router
-//  const router = useRouter();
+  //* router
+  const navigate = useNavigate();
 
- //* state for prescription
- // const [isPrescriptionUploaded, setPrescriptionUploaded] = useState(false);
+  const subTotal = cart.products.reduce(
+    (total: number, product: CartProduct) =>
+      total + product.price * product.orderQuantity,
+    0
+  );
 
- // const handlePrescriptionUpload = () => {
- //   setPrescriptionUploaded(true);
- // };
+  const shippingCost = !cart.city ? 0 : cart.city === "Dhaka" ? 50 : 100;
+  const grandTotal = subTotal + shippingCost;
 
-//  const subTotal = cart.medicines.reduce(
-//    (total: number, product: CartProduct) =>
-//      total + product.price * product.orderQuantity,
-//    0
-//  );
+  //* order handle
+  const handleOrder = async () => {
+    //* toast id
+    const orderLoading = toast.loading("Order is in process");
 
-//  const shippingCost = !cart.city ? 0 : cart.city === "Dhaka" ? 50 : 300;
-//  const grandTotal = subTotal + shippingCost;
+    try {
+      if (!userId) {
+        navigate("/login");
+        throw new Error("Please login first.");
+      }
+      if (!cart.city) {
+        throw new Error("City is missing");
+      }
+      if (!cart.shippingAddress) {
+        throw new Error("Shipping address is missing");
+      }
+      if (cartProducts.length === 0) {
+        throw new Error("Cart is empty, what are you trying to order ??");
+      }
 
- // const isOrderDisabled = cart.medicines.some(
- //   (product) =>
- //     product.requiredPrescription === "Yes" && !isPrescriptionUploaded
- // );
+      //* submit type match
+      const orderData = {
+        ...order,
+        user: userId as string,
+        totalPrice: grandTotal as number,
+        paymentStatus: 'UNPAID',
+        shippinhStatus: 'PENDING'
 
- // const anyPrescriptionRequiredItem = cart.medicines.find(
- //   (product) => product.requiredPrescription === "Yes"
- // );
+      };
 
- //* order handle
- const handleOrder = async () => {
-   //* toast id
-//    const orderLoading = toast.loading("Order is in process");
+      // console.log(orderData);
 
-   try {
-    //  if (!user.user) {
-    //    router.push("/login");
-    //    throw new Error("Please login first.");
-    //  }
-    //  if (!cart.city) {
-    //    throw new Error("City is missing");
-    //  }
-    //  if (!cart.shippingAddress) {
-    //    throw new Error("Shipping address is missing");
-    //  }
-    //  if (cartProducts.length === 0) {
-    //    throw new Error("Cart is empty, what are you trying to order ??");
-    //  }
+      //* Perform order submission logic (e.g., sending data to an API)
+      const response = await axiosCommon.post(
+        `/api/orders/create-order`,
+        orderData,
+      );
+      console.log(response);
 
-     //* submit type match
-    //  const orderData = { 
-    //    ...order, 
-    //    user: user.user._id as string,
-    //    totalPrice: grandTotal as number
-    //  };
+      console.log(response.data.success);
 
+      if (response.data.success) {
+        toast.success(response.data.message, { id: orderLoading });
+        //? Once the order is placed, reset the cart
+        dispatch(resetCart());
+        // toast.success("Order placed successfully!");
+        window.location.replace(response.data.data.GatewayPageURL);
+      }
 
-     //* Perform order submission logic (e.g., sending data to an API)
-    //  const res = await createOrder(orderData);
+      // if (!res.success) {
+      //   toast.error(res.message, { id: orderLoading });
+      // }
+    } catch (error: any) {
+      toast.error(error.message, { id: orderLoading });
+    }
+  };
 
-    //  if (res.success) {
-    //    toast.success(res.message, { id: orderLoading });
-    //    //? Once the order is placed, reset the cart
-    //    dispatch(resetCart());
-    //    toast.success("Order placed successfully!");
-    //    router.push(res.data.paymentUrl);
-    //  }
+  return (
+    <div className="border-2 border-white bg-background brightness-105 rounded-md col-span-4 h-fit p-5">
+      <h1 className="text-2xl font-bold">Payment Details</h1>
 
-    //  if (!res.success) {
-    //    toast.error(res.message, { id: orderLoading });
-    //  }
-   } catch (error: any) {
-    //  toast.error(error.message, { id: orderLoading });
-   } 
- };
+      <div className="space-y-2 mt-4">
+        <div className="flex justify-between">
+          <p className="text-gray-500">Subtotal</p>
+          <p className="font-semibold">{currencyFormatter(subTotal)}</p>
+        </div>
+        <div className="flex justify-between">
+          <p className="text-gray-500">Shipment Cost</p>
+          <p className="font-semibold">{currencyFormatter(shippingCost)}</p>
+        </div>
+      </div>
 
- return (
-   <div className="border-2 border-white bg-background brightness-105 rounded-md col-span-4 h-fit p-5">
-     <h1 className="text-2xl font-bold">Payment Details</h1>
+      <div className="flex justify-between mt-10 mb-5">
+        <p className="text-gray-500">Grand Total</p>
+        <p className="font-semibold">{currencyFormatter(grandTotal)}</p>
+      </div>
 
-     <div className="space-y-2 mt-4">
-       <div className="flex justify-between">
-         <p className="text-gray-500">Subtotal</p>
-         {/* <p className="font-semibold">{currencyFormatter(subTotal)}</p> */}
-       </div>
-       <div className="flex justify-between">
-         <p className="text-gray-500">Shipment Cost</p>
-         {/* <p className="font-semibold">{currencyFormatter(shippingCost)}</p> */}
-       </div>
-     </div>
-
-     <div className="flex justify-between mt-10 mb-5">
-       <p className="text-gray-500">Grand Total</p>
-       {/* <p className="font-semibold">{currencyFormatter(grandTotal)}</p> */}
-     </div>
-
-     {/* {cart.medicines.some(
-       (product) => product.requiredPrescription === "Yes"
-     ) && (
-       <PrescriptionUploader
-         orderId={anyPrescriptionRequiredItem?._id as string}
-         onUploaded={handlePrescriptionUpload}
-       />
-     )} */}
-
-     <CustomButton
-       textName="Order Now"
-       handleAnything={handleOrder}
-       className="w-full font-semibold py-1!"
-       // disabled={isOrderDisabled}
-     />
-   </div>
- );
+      <CustomButton
+        textName="Order Now"
+        handleAnything={handleOrder}
+        className="w-full font-semibold py-1!"
+        // disabled={isOrderDisabled}
+      />
+    </div>
+  );
 };
 
 export default PaymentDetails;

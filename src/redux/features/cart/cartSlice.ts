@@ -124,7 +124,7 @@ const cartSlice = createSlice({
 
 //* products
 
-export const orderedMedicinesSelector = (state: RootState) => {
+export const orderedProductsSelector = (state: RootState) => {
   return state.cart.products;
 };
 

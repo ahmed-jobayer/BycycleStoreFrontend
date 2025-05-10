@@ -1,9 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SuccessOrder = () => {
-  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
@@ -14,13 +13,17 @@ const SuccessOrder = () => {
           Thank you for your purchase! Your order has been successfully placed.
         </p>
         <div className="flex justify-center gap-4">
-          <Button variant="default" onClick={() => navigate('/')}>
+          <Link to="/">
+          <Button className="bg-green hover:bg-gdarkGreen">
             Go to Home
           </Button>
-          <Button variant="outline" onClick={() => navigate('/dashboard/customer/view-order')}>
+          </Link>
+          <Link to="/dashboard/customer/view-order">
+          <Button variant="outline">
             View Orders
           </Button>
-        </div>
+          </Link>
+        </div> 
       </div>
     </div>
   );
