@@ -8,6 +8,6 @@ const CheckoutLayout = () => {
       <Footer />
     </div>
   );
-};
+}; 
 
 export default CheckoutLayout;

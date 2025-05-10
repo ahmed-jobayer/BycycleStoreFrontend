@@ -10,7 +10,7 @@ import ResponsiveNavbar from "@/components/home/ResponsiveNavbar";
 import CustomButton from "@/components/shared/CustomButton";
 import { useGetProductByIdQuery } from "@/redux/api/productApi";
 
-const Checkout = () => {
+const Checkout = () => { 
   const axiosCommon = useAxiosCommon();
   const { id } = useParams();
   const [totalPrice, setTotalPrice] = useState(0);

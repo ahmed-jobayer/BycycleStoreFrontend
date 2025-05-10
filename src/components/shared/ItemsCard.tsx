@@ -8,6 +8,9 @@ import { FcMoneyTransfer } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { JSX } from "react/jsx-runtime";
 import CustomButton from "./CustomButton";
+import { useAppDispatch } from "@/redux/hooks";
+import { IProduct } from "@/utils/types";
+import { addProduct } from "@/redux/features/cart/cartSlice";
 
 export interface ItemData {
   map?(arg0: (d: ItemData) => JSX.Element): import("react").ReactNode;
@@ -32,6 +35,7 @@ export interface ItemsCardProps {
 const ItemsCard: React.FC<ItemsCardProps> = ({ data, isPending }) => {
   // loading state
   const [loading, _setLoading] = useState<boolean>(isPending);
+  const dispatch = useAppDispatch()
 
   // mavigation
   const navigate = useNavigate();
@@ -51,6 +55,11 @@ const ItemsCard: React.FC<ItemsCardProps> = ({ data, isPending }) => {
     // createdAt,
   } = data;
 
+  const handleAddToCart = (product: IProduct) => {
+    dispatch(addProduct(product));
+  };
+
+
   // button for card
   const actions: React.ReactNode[] = [
     <>
@@ -59,12 +68,13 @@ const ItemsCard: React.FC<ItemsCardProps> = ({ data, isPending }) => {
         handleAnything={(e) => {
           e.preventDefault(); //  Prevent <Link> default nav
           e.stopPropagation(); //  Prevents the Link from triggering / event bubbling
-          navigate(`/checkout/${_id}`);
+          handleAddToCart(data );
+          // navigate(`/checkout/${_id}`);
         }}
         textName={
           <div className="flex gap-1 justify-content-center items-center ">
             <FcMoneyTransfer />
-            Buy Now
+            Add to Cart
           </div>
         }
       />

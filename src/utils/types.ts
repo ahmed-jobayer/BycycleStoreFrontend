@@ -126,3 +126,47 @@ type FilterKey = "search" | "priceRange" | "type" | "brand" | "availability";
 export interface AllBicycleFilterProps {
   handleChange: (key: FilterKey, value: string | number[] | boolean) => void;
 }
+
+
+
+
+
+
+
+export interface IProduct  {
+  _id?: string;
+  name: string;
+  Img?: string; 
+  brand: string;
+  price: number;
+  // type: "Mountain" | "Road" | "Hybrid" | "BMX" | "Electric";
+  type: string;
+  description: string;
+  quantity: number;
+  inStock: boolean;
+}
+
+
+
+
+export interface IOrder {
+  products: IOrderProduct[];
+  coupon?: string;
+  shippingAddress: string;
+  paymentMethod?: string;
+}
+
+export interface IOrderProduct {
+  product: string | undefined;
+  quantity: number;
+  price: number;
+}
+
+
+export interface IPartialOrder {
+  products: IOrderProduct[];
+  shippingAddress?: string;
+  city?: string;
+  user: string;
+  totalPrice: number;
+}

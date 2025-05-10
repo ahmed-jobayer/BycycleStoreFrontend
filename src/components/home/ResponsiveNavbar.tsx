@@ -26,6 +26,8 @@ const ResponsiveNavbar = () => {
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const [searchText, setSearchText] = useState("");
 
+  const products = useAppSelector((state) => state.cart.products);
+
   // navigation
   const navigate = useNavigate();
 
@@ -159,7 +161,7 @@ const ResponsiveNavbar = () => {
   const mobileSidebarLinks = (
     <ul className="items-start gap-[20px] text-[1rem] flex flex-col">
       {mobileSearch}
-      
+
       <li className=" transition-all duration-300 capitalize cursor-pointer">
         <NavLink to="/" className={activeLink}>
           Home
@@ -273,7 +275,10 @@ const ResponsiveNavbar = () => {
         </div>
       )}
       <NavLink to="/cart">
-        <ShoppingCart />
+        <div className="relative">
+          <ShoppingCart />
+          <span className="text-gdarkGreen absolute -top-2 -right-1 p-[1px] px-[3px] bg-white rounded-full text-xs">{products?.length}</span>
+        </div>
       </NavLink>
 
       <CiMenuFries
@@ -285,7 +290,10 @@ const ResponsiveNavbar = () => {
 
   // Desktop search box
   const searchBox = (
-    <form onSubmit={handleSearch} className="w-1/3 text-darkGrey hidden lg:grid">
+    <form
+      onSubmit={handleSearch}
+      className="w-1/3 text-darkGrey hidden lg:grid"
+    >
       <div className="relative">
         <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
           <Search className="text-gray-400" />

@@ -8,7 +8,7 @@ const AboutusLayout = () => {
         <ResponsiveNavbar />
       <div className="container mx-auto min-h-screen space-y-6 sm:space-y-8 lg:space-y-12 px-2 ">
         <About />
-      </div>
+      </div> 
       <Footer />
     </div>
   );

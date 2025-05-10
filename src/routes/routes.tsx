@@ -10,7 +10,7 @@ import ForgotPassword from "@/pages/authentication/ForgotPassword";
 import Register from "@/pages/authentication/register";
 import PrivacyPolicy from "@/pages/terms/PrivacyPolicy";
 import TermsAndCondition from "@/pages/terms/TermsAndCondition";
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom"; 
 import App from "../App";
 import ProtectedRoute from "../components/layout/ProtectedRoute";
 import HomeLayout from "../layout/home/HomeLayout";
@@ -22,6 +22,7 @@ import { adminPaths } from "./admin.routes";
 import { userPaths } from "./user.routes";
 import SuccessOrder from "@/pages/successOrder/SuccessOrder";
 import FailedOrder from "@/pages/failedOrder/FailedOrder";
+import CartLayout from "@/layout/cart/CartLayout";
 
 const routes = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const routes = createBrowserRouter([
       {
         path: "about",
         element: <AboutusLayout />,
+      },
+      {
+        path: "cart",
+        element: <CartLayout />,
       },
       {
         path: "successfull-order",
@@ -64,6 +69,7 @@ const routes = createBrowserRouter([
           },
         ],
       },
+
       {
         path: "checkout/:id",
         element: <CheckoutLayout />,
