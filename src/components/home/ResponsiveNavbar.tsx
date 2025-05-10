@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 
 // react icons
@@ -13,6 +14,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import logo from "../../assets/images/logo/logo.png";
 import { logout, useCurrentUser } from "../../redux/features/auth/authSlice";
+import { setFilter } from "../../redux/features/filterSlice/filterSlice"; // Import the filter action
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import CustomButton from "../shared/CustomButton";
 import { Search, ShoppingCart } from "lucide-react";
@@ -22,6 +24,7 @@ const ResponsiveNavbar = () => {
   const [accountMenuOpen, setAccountMenuOpen] = useState(false);
   const [mobileAboutUsOpen, setMobileAboutUsOpen] = useState(false);
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const [searchText, setSearchText] = useState("");
 
   // navigation
   const navigate = useNavigate();
@@ -49,6 +52,19 @@ const ResponsiveNavbar = () => {
       toast.success("Logged out successfully", { id: toastId, duration: 2000 });
     } catch (error) {
       toast.error(`Something went wrong: ${error}`, { id: toastId });
+    }
+  };
+
+  // Handle search submission
+  const handleSearch = (e: any) => {
+    e.preventDefault();
+    if (searchText.trim()) {
+      dispatch(setFilter({ search: searchText }));
+      navigate("/AllBicycles");
+      // Close mobile sidebar if open
+      if (mobileSidebarOpen) {
+        setMobileSidebarOpen(false);
+      }
     }
   };
 
@@ -115,9 +131,35 @@ const ResponsiveNavbar = () => {
     </ul>
   );
 
+  // Mobile search component
+  const mobileSearch = (
+    <form onSubmit={handleSearch} className="w-full mb-4">
+      <div className="relative">
+        <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+          <Search size={18} className="text-gray-400" />
+        </div>
+        <input
+          type="search"
+          className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50"
+          placeholder="Search Bicycle..."
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        />
+        <button
+          type="submit"
+          className="text-white absolute end-[5px] cursor-pointer bottom-[5px] bg-green rounded-lg text-sm px-2 py-1"
+        >
+          Search
+        </button>
+      </div>
+    </form>
+  );
+
   // mobile sidebar
   const mobileSidebarLinks = (
     <ul className="items-start gap-[20px] text-[1rem] flex flex-col">
+      {mobileSearch}
+      
       <li className=" transition-all duration-300 capitalize cursor-pointer">
         <NavLink to="/" className={activeLink}>
           Home
@@ -231,8 +273,7 @@ const ResponsiveNavbar = () => {
         </div>
       )}
       <NavLink to="/cart">
-
-      <ShoppingCart />
+        <ShoppingCart />
       </NavLink>
 
       <CiMenuFries
@@ -242,23 +283,24 @@ const ResponsiveNavbar = () => {
     </div>
   );
 
+  // Desktop search box
   const searchBox = (
-    <form className=" w-1/3 text-darkGrey">
-     
+    <form onSubmit={handleSearch} className="w-1/3 text-darkGrey hidden lg:grid">
       <div className="relative">
         <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-        <Search />
+          <Search className="text-gray-400" />
         </div>
         <input
           type="search"
           id="default-search"
-          className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 "
+          className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50"
           placeholder="Search Bicycle..."
-          required
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
         />
         <button
           type="submit"
-          className="hidden md:flex text-white absolute end-[5px] cursor-pointer bottom-[5px] bg-green   rounded-lg text-sm px-2 py-1"
+          className="hidden md:flex text-white absolute end-[5px] cursor-pointer bottom-[5px] bg-green rounded-lg text-sm px-2 py-1"
         >
           Search
         </button>
@@ -267,8 +309,8 @@ const ResponsiveNavbar = () => {
   );
 
   return (
-    <nav className=" sticky top-0  z-50  w-full text-offWhite">
-      <div className="bg-gdarkGreen w-full px-2">
+    <nav className=" sticky top-0  z-50  w-full text-offWhite ">
+      <div className="bg-gdarkGreen w-full px-6">
         <div className="container mx-auto">
           {/* nav links */}
           {desktopNavLinks}
@@ -292,8 +334,7 @@ const ResponsiveNavbar = () => {
             </ul>
           </div>
 
-          {/* nav links */}
-          {/* {desktopNavLinks} */}
+          {/* Search box */}
           {searchBox}
 
           {/* user account login */}
@@ -301,7 +342,7 @@ const ResponsiveNavbar = () => {
 
           {/* mobile sidebar */}
           <aside
-            className={` ${
+            className={`${
               mobileSidebarOpen
                 ? "translate-x-0 opacity-100 z-20"
                 : "translate-x-[200px] opacity-0 z-[-1] hidden"

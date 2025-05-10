@@ -1,4 +1,3 @@
-
 import { BsInstagram, BsLinkedin, BsTwitter } from "react-icons/bs";
 import { CgFacebook } from "react-icons/cg";
 import { SlArrowUp } from "react-icons/sl";
@@ -18,8 +17,8 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-white w-full p-3 md:p-4 relative  2xl:h-[30vh]">
-      <div className="w-full flex items-center justify-center pt-[30px] flex-col gap-[20px] pb-[130px]">
+    <footer className=" w-full  relative lg:h-[10vh]  2xl:h-[20vh] bg-green border">
+      <div className="w-full bg-gradient-to-t  from-green to-white px-2 bg-green flex items-center justify-center pt-[30px] flex-col gap-[20px] pb-[30px]">
         {/* motto */}
         <h3 className="text-2xl font-semibold font-serif">
           ☘️Safe Journey With Nature🌿
@@ -29,10 +28,10 @@ const Footer = () => {
         <img
           src={logo}
           alt="logo"
-          className="w-[5rem] border-2 border-green rounded-full"
+          className="w-[5rem] border-2  rounded-full bg-white"
         />
 
-        <p className="text-[0.9rem] text-center sm:text-start text-gray-600">
+        <p className="text-[0.9rem] text-center sm:text-start text-black">
           High level experience in web design and development knowledge,
           producing quality work.
         </p>
@@ -70,23 +69,14 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="z-30 absolute bottom-3 left-0 right-0 px-3 flex items-center justify-between w-full">
-        {/* year of making */}
-        <p className="text-[0.9rem] text-white">
-          ©
-          {new Date().getFullYear() !== 2025
-            ? 2025 - new Date().getFullYear()
-            : new Date().getFullYear()}{" "}
-          All Rights Reserved by Bicycle
-        </p>
-
+      <div className="z-30 fixed  bottom-2 right-2 ">
         {/* go to top */}
         <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-          <SlArrowUp className="p-2 rounded-full border border-lightGrey cursor-pointer text-[2rem] text-purple-600 hover:bg-blue-400 hover:scale-110" />
+          <SlArrowUp className="p-2 rounded-full border border-black cursor-pointer text-[2rem] text-black  hover:scale-110 transition-transform duration-300" />
         </button>
       </div>
 
-      <img
+      {/* <img
         src="https://i.ibb.co/zNk7XT4/Rectangle-97.png"
         alt="background/image"
         className="absolute bottom-[20px] sm:bottom-0 left-0 right-0 z-10 rounded-t-xl w-full"
@@ -95,7 +85,7 @@ const Footer = () => {
         src="https://i.ibb.co/0mp2FwS/Rectangle-95.png"
         alt="background/image"
         className="absolute bottom-0 left-0 right-0 z-10 rounded-t-xl w-full"
-      />
+      /> */}
     </footer>
   );
 };

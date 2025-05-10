@@ -11,7 +11,7 @@ const About = () => {
           <div className="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white ring-1 shadow-xl shadow-indigo-600/10 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center"></div>
           <div className="mx-auto max-w-2xl lg:max-w-4xl">
             <img
-              src="https://avatars.githubusercontent.com/u/54356991?v=4"
+              src="https://avatars.githubusercontent.com/u/112149785?v=4"
               alt="image"
               className="mx-auto h-48 rounded-full"
             />

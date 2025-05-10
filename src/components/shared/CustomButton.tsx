@@ -28,7 +28,7 @@ const CustomButton = ({
       type={type} // the `type` prop here
       disabled={disabled}
       className={clsx(
-        "relative inline-flex hover items-center justify-center px-8 py-3.5 overflow-hidden font-mono dark:bg-slate-800 tracking-tighter text-green border border-gdarkGreen bg-white rounded-lg group cursor-pointer  active:scale-95 active:shadow-inner",
+        "relative inline-flex hover items-center justify-center  px-3 py-2 overflow-hidden font-mono dark:bg-slate-800 tracking-tighter text-green border border-gdarkGreen bg-white rounded-lg group cursor-pointer  active:scale-95 active:shadow-inner",
         className
       )}
     >

@@ -5,7 +5,7 @@ import baseApi from "./baseApi";
 export const productApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     // Fetch all products (GET)
-    getAllProducts: builder.query<
+    getAllProducts: builder.query< 
       ApiResponse,
       { page?: number; limit?: number }
     >({

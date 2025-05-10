@@ -10,6 +10,7 @@ import { useLoginMutation } from "../../redux/api/authApi";
 import { setUser, TUserFromToken } from "../../redux/features/auth/authSlice";
 import { useAppDispatch } from "../../redux/hooks";
 import { verifyToken } from "../../utils/verifyToken";
+import { StepBack } from "lucide-react";
 
 const Login = () => {
   // useLogin mutation hook
@@ -48,13 +49,13 @@ const Login = () => {
           setUser({
             user: res?.data as TUserFromToken,
             token: res?.token,
-          }),
+          })
         );
 
         // Persist token based on "remember me"
         if (values.remember) {
           localStorage.setItem("authToken", res.token);
-          localStorage.setItem("userData", JSON.stringify(res.data))
+          localStorage.setItem("userData", JSON.stringify(res.data));
         } else {
           sessionStorage.setItem("authToken", res.token);
           sessionStorage.setItem("userData", JSON.stringify(res.data));
@@ -103,6 +104,8 @@ const Login = () => {
     }
   }, [navigate]); // Empty dependency array to run once when the component is mounted
 
+  const [form] = Form.useForm();
+
   // loading
   if (redirecting) {
     return (
@@ -114,13 +117,37 @@ const Login = () => {
 
   return (
     <div className="flex justify-center items-center h-screen">
-      <div className="p-8 border rounded shadow-md border-purple-600 shadow-purple-600">
+      <div className="p-8 border rounded shadow-md border-green shadow-gdarkGreen">
         <Form
+          form={form}
           name="login"
           initialValues={{ remember: true }}
           style={{ maxWidth: 360 }}
           onFinish={onFinish}
         >
+          <div className="flex justify-center gap-4 mb-4">
+            <CustomButton
+              className="!py-1"
+              textName="Admin"
+              handleAnything={() => {
+                form.setFieldsValue({
+                  email: "jbadmin@gmail.com",
+                  password: "123456",
+                });
+              }}
+            />
+            <CustomButton
+              className="!py-1"
+              textName="Customer"
+              handleAnything={() => {
+                form.setFieldsValue({
+                  email: "user@example.com",
+                  password: "123456",
+                });
+              }}
+            />
+          </div>
+
           {/* email */}
           <label>Email</label>
           <Form.Item
@@ -163,7 +190,7 @@ const Login = () => {
           <Form.Item>
             <CustomButton
               type="submit"
-              className="w-full !py-1.5"
+              className="w-full !py-1.5 !bg-green !text-black"
               textName={
                 isLoading ? (
                   <TbFidgetSpinner className="animate-spin" />
@@ -178,6 +205,17 @@ const Login = () => {
             </p>
           </Form.Item>
         </Form>
+        <Link to="/" className="flex justify-center">
+          <CustomButton
+            textName={
+              <div className="flex gap-1 justify-content-center items-center ">
+                <StepBack />
+                Back to Home
+              </div>
+            }
+            className="!py-1"
+          />
+        </Link>
       </div>
     </div>
   );

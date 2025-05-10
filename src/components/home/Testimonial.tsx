@@ -27,6 +27,8 @@ const Testimonial = () => {
     // Add more testimonials here
   ];
 
+
+
   return (
     <div className="w-full min-h-[55vh] rounded-4xl! shadow-xl">
       <Carousel
@@ -76,6 +78,7 @@ const Testimonial = () => {
           </section>
         ))}
       </Carousel>
+
     </div>
   );
 };

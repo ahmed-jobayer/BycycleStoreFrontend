@@ -8,6 +8,7 @@ import { useRegisterMutation } from "../../redux/api/authApi"; // Import registe
 import { useEffect, useState } from "react";
 import Loading from "@/components/shared/Loading";
 import { verifyToken } from "@/utils/verifyToken";
+import { StepBack } from "lucide-react";
 
 const Register = () => {
   // useRegister mutation hook
@@ -95,7 +96,7 @@ const Register = () => {
 
   return (
     <div className="flex justify-center items-center h-screen">
-      <div className="p-8 border rounded shadow-md border-purple-600 shadow-purple-600">
+      <div className="p-8 border rounded shadow-md border-green shadow-gdarkGreen">
         <Form
           name="register"
           initialValues={{ remember: true }}
@@ -167,10 +168,10 @@ const Register = () => {
           <Form.Item>
             <CustomButton
               type="submit"
-              className="w-full !py-1.5"
+              className="w-full !py-1.5 !bg-green !text-black"
               textName={
                 isLoading ? (
-                  <TbFidgetSpinner className="animate-spin" />
+                  <TbFidgetSpinner className="animate-spin " />
                 ) : (
                   "Register"
                 )
@@ -181,6 +182,17 @@ const Register = () => {
             </p>
           </Form.Item>
         </Form>
+        <Link to="/" className="flex justify-center">
+          <CustomButton
+            textName={
+              <div className="flex gap-1 justify-content-center items-center ">
+                <StepBack />
+                Back to Home
+              </div>
+            }
+            className="!py-1"
+          />
+        </Link>
       </div>
     </div>
   );

@@ -28,7 +28,7 @@ const Hero = () => {
 
           <div className="flex items-center flex-wrap gap-[20px] mt-6">
 
-            <CustomButton textName="Get Started" handleAnything={handleClick}/>
+            <CustomButton textName="View Featured Bicycle" handleAnything={handleClick}/>
 
           </div>
         </div>

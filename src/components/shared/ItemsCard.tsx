@@ -38,13 +38,13 @@ const ItemsCard: React.FC<ItemsCardProps> = ({ data, isPending }) => {
 
   // destructure items
   const {
-    brand,
+    // brand,
     // description,
-    inStock,
+    // inStock,
     name,
-    quantity,
+    // quantity,
     Img,
-    type,
+    // type,
     // updatedAt,
     _id,
     price,
@@ -55,8 +55,7 @@ const ItemsCard: React.FC<ItemsCardProps> = ({ data, isPending }) => {
   const actions: React.ReactNode[] = [
     <>
       <CustomButton
-      className="w-[90%] !py-2 hover:scale-95 transition-transform duration-300"
-      
+        className="w-[90%] !py-2 hover:scale-95 transition-transform duration-300"
         handleAnything={(e) => {
           e.preventDefault(); //  Prevent <Link> default nav
           e.stopPropagation(); //  Prevents the Link from triggering / event bubbling
@@ -65,7 +64,7 @@ const ItemsCard: React.FC<ItemsCardProps> = ({ data, isPending }) => {
         textName={
           <div className="flex gap-1 justify-content-center items-center ">
             <FcMoneyTransfer />
-            BuyNow
+            Buy Now
           </div>
         }
       />
@@ -73,35 +72,32 @@ const ItemsCard: React.FC<ItemsCardProps> = ({ data, isPending }) => {
   ];
 
   return (
-    <Link to={`/bicycles/${_id}`}>
-      <Flex
-        gap="middle"
-        align="start"
-        vertical
-        className="shadow-xl rounded-2xl"
-      >
-        {/* <Switch
+    <Flex gap="middle" align="start" vertical className="shadow-xl rounded-2xl">
+      {/* <Switch
           checked={!loading}
           onChange={(checked) => setLoading(!checked)}
         /> */}
 
-        {loading ? (
-          <div className="w-full p-6">
-            <Skeleton active avatar paragraph={{ rows: 4 }} />
-          </div>
-        ) : (
-          <Card 
-          loading={loading} actions={actions} style={{ minWidth: 200 }}
-          className="w-full"
+      {loading ? (
+        <div className="w-full p-6">
+          <Skeleton active avatar paragraph={{ rows: 4 }} />
+        </div>
+      ) : (
+        <Link to={`/bicycles/${_id}`} className=" w-full">
+          <Card
+            loading={loading}
+            actions={actions}
+            style={{ minWidth: 200 }}
+            className="w-full "
           >
             {!Img ? (
-              <img alt="Bicycle" src={cycle} className="mb-6 w-full" />
+              <img alt="Bicycle" src={cycle} className="mb-6 w-full border " />
             ) : (
-              <img alt="Bicycle" src={Img} className="mb-6 w-full h-52" />
+              <img alt="Bicycle" src={Img} className="mb-6 w-full h-40 object-cover" />
             )}
 
             <Card.Meta
-              className="max-h-68"
+              className=""
               // avatar={
               //   <Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=1" />
               // }
@@ -109,33 +105,33 @@ const ItemsCard: React.FC<ItemsCardProps> = ({ data, isPending }) => {
               description={
                 <div className="space-y-2">
                   {/* <p className="mb-2 min-h-20 font-semibold">{description}</p> */}
-                  <p className="flex justify-between">
+                  {/* <p className="flex justify-between">
                     <span className="font-medium">Brand:</span>
                     <span className="font-serif">{brand}</span>
                   </p>
                   <p className="flex justify-between">
                     <span className="font-medium">Type:</span>
                     <span className="font-serif">{type}</span>
-                  </p>
+                  </p> */}
                   <p className="flex justify-between">
                     <span className="font-medium">Price:</span>
                     <span className="font-serif">${price}</span>
                   </p>
-                  <p className="flex justify-between">
+                  {/* <p className="flex justify-between">
                     <span className="font-medium">Quantity:</span>
                     <span className="font-serif">{quantity}</span>
-                  </p>
-                  <p className="flex justify-between">
+                  </p> */}
+                  {/* <p className="flex justify-between">
                     <span className="font-medium">In Stock:</span>
                     <span className="font-serif">{inStock ? "Yes" : "No"}</span>
-                  </p>
+                  </p> */}
                 </div>
               }
             />
           </Card>
-        )}
-      </Flex>
-    </Link>
+        </Link>
+      )}
+    </Flex>
   );
 };
 

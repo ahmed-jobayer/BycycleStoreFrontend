@@ -53,7 +53,7 @@ const FeaturedBicycles = () => {
   //   if (error) return 'An error has occurred: ' + error.message + console.log(error, data)
 
   return (
-    <div className="w-full min-h-[45vh] sm:min-h-[55vh] lg:min-h-[60vh] rounded-4xl shadow-xl p-6 sm:p-8 md:p-12 lg:p-16">
+    <div className="w-full min-h-[45vh] sm:min-h-[55vh] lg:min-h-[60vh] rounded-4xl shadow-2xl p-6 sm:p-8 md:p-12 lg:p-16">
       {/* header */}
       <header className="flex h-full flex-col gap-12 lg:gap-0 lg:flex-row justify-center items-center lg:mt-3">
         <div className="px-6 sm:px-8 mt-8 lg:mt-0 w-full lg:w-[50%] space-y-6">
@@ -76,7 +76,7 @@ const FeaturedBicycles = () => {
 
       {/* grid */}
       <div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 px-4 sm:px-6 lg:px-8 mt-10"
+        className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-8 px-4 sm:px-6 lg:px-8 mt-10"
         id="featured"
       >
         {data?.result
@@ -88,7 +88,7 @@ const FeaturedBicycles = () => {
             // Then sort by price (high to low)
             return b.price - a.price;
           }) // high to low
-          ?.slice(0, 6) // just first 6 items from the response
+          ?.slice(0, 8) // just first 6 items from the response
           ?.map((d: ItemData) => (
             <ItemsCard key={d._id} data={d} isPending={isPending} />
           ))}

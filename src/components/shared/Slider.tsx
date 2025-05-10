@@ -6,6 +6,7 @@ import cycle from "../../assets/images/img/bicycle.jpg";
 import { ItemData } from "./ItemsCard";
 import Loading from "./Loading";
 import { ApiResponse } from "@/utils/types";
+import { Link } from "react-router-dom";
 
 interface ApiResponseWithIsPending {
   data: ApiResponse;
@@ -22,7 +23,7 @@ const Slider: React.FC<ApiResponseWithIsPending> = ({ data, isPending }) => {
   return ( 
     <Carousel
       autoplay={{ dotDuration: true }}
-      autoplaySpeed={1500}
+      autoplaySpeed={2000}
       arrows={true}
       fade={true}
       className="min-w-full min-h-[55vh] bg-gradient-to-r from-green to-white rounded-4xl"
@@ -40,10 +41,11 @@ const Slider: React.FC<ApiResponseWithIsPending> = ({ data, isPending }) => {
           }) // high to low sort
           .slice(0, 6)
           .map((d: ItemData) => (
-            <div key={d?._id} className="rounded-4xl">
+            <Link to={`/bicycles/${d?._id}`} key={d?._id}>
+            <div  className="rounded-4xl">
               {/* description */}
               <header className="flex min-h-[55vh] h-full lg:flex-row flex-col gap-[50px] lg:gap-0 justify-center items-center rounded-4xl">
-                <div className="px-8 mt-8 sm:h-1/2  lg:mt-0 w-full lg:w-[50%] text-center">
+                <div className="px-8 mt-8 sm:h-1/2  lg:mt-0 w-full lg:w-[50%] text-center text-black">
                   <h1 className="text-[40px] lg:text-[60px] leading-[45px] lg:leading-[65px] font-[500]">
                     {d?.name}
                   </h1>
@@ -55,11 +57,12 @@ const Slider: React.FC<ApiResponseWithIsPending> = ({ data, isPending }) => {
                   <img
                     src={d?.Img || cycle}
                     alt="image"
-                    className="w-48 h-48 md:w-80 md:h-80 lg:w-96 lg:h-96 object-fill rounded-full"
+                    className="w-48 h-48 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover rounded-full"
                   />
                 </div>
               </header>
             </div>
+            </Link>
           ))}
     </Carousel>
   );

@@ -10,7 +10,7 @@ const AllBicycleFilter = ({ handleChange }: AllBicycleFilterProps) => {
   // console.log(filters);
 
   return (
-    <div className="p-6 bg-white shadow-md rounded-lg w-full">
+    <div className="p-6 bg-white shadow-md rounded-lg w-full"> 
       <h2 className="text-xl font-semibold mb-4">Filters</h2>
 
       {/* Search Input */}
@@ -51,9 +51,11 @@ const AllBicycleFilter = ({ handleChange }: AllBicycleFilterProps) => {
           allowClear
         >
           <Option value="">All</Option>
-          <Option value="road">Road</Option>
           <Option value="mountain">Mountain</Option>
           <Option value="hybrid">Hybrid</Option>
+          <Option value="road">Road</Option>
+          <Option value="gravel">Gravel</Option>
+          <Option value="electric">Electric</Option>
         </Select>
       </div>
 
@@ -68,10 +70,11 @@ const AllBicycleFilter = ({ handleChange }: AllBicycleFilterProps) => {
           allowClear
         >
           <Option value="">All</Option>
-          <Option value="valoc">Valoc</Option>
-          <Option value="duronto">Duronto</Option>
+          <Option value="terraBikes">TerraBikes</Option>
+          <Option value="urbanRide">UrbanRide</Option>
           <Option value="speedX">SpeedX</Option>
-          <Option value="BMW">BMW</Option>
+          <Option value="gravix">Gravix</Option>
+          <Option value="ecoCycle">EcoCycle</Option>
         </Select>
       </div>
 
