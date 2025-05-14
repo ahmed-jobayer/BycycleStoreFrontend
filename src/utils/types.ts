@@ -51,6 +51,8 @@ export interface TUser {
     createdAt?: string;
     updatedAt?: string;
     image?: string;
+    profileImage: string;
+  profileCover: string;
   };
 }
 
@@ -93,7 +95,7 @@ export interface Order {
   totalPrice: number;
   isDeleted: boolean;
   paymentStatus: 'UNPAID' | 'PAID';
-  status: ShippingStatus;
+  shippingStatus: ShippingStatus;
   createdAt: string;
   updatedAt?: string;
 }

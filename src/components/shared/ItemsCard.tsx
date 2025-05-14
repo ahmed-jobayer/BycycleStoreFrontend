@@ -4,13 +4,14 @@ import cycle from "../../assets/images/img/bicycle.jpg";
 
 import { Card, Flex, Skeleton } from "antd";
 import { useState } from "react";
-import { FcMoneyTransfer } from "react-icons/fc";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { JSX } from "react/jsx-runtime";
 import CustomButton from "./CustomButton";
 import { useAppDispatch } from "@/redux/hooks";
 import { IProduct } from "@/utils/types";
 import { addProduct } from "@/redux/features/cart/cartSlice";
+import { toast } from "sonner";
+import { ShoppingCart } from "lucide-react";
 
 export interface ItemData {
   map?(arg0: (d: ItemData) => JSX.Element): import("react").ReactNode;
@@ -37,8 +38,7 @@ const ItemsCard: React.FC<ItemsCardProps> = ({ data, isPending }) => {
   const [loading, _setLoading] = useState<boolean>(isPending);
   const dispatch = useAppDispatch()
 
-  // mavigation
-  const navigate = useNavigate();
+
 
   // destructure items
   const {
@@ -57,7 +57,8 @@ const ItemsCard: React.FC<ItemsCardProps> = ({ data, isPending }) => {
 
   const handleAddToCart = (product: IProduct) => {
     dispatch(addProduct(product));
-  };
+    toast.success("Item Added to The Cart");
+  }; 
 
 
   // button for card
@@ -73,7 +74,7 @@ const ItemsCard: React.FC<ItemsCardProps> = ({ data, isPending }) => {
         }}
         textName={
           <div className="flex gap-1 justify-content-center items-center ">
-            <FcMoneyTransfer />
+            <ShoppingCart  />
             Add to Cart
           </div>
         }

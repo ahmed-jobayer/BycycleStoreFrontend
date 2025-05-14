@@ -11,7 +11,7 @@ export const userPaths = [
   },
   {
     name: "Manage Profile",
-    path: "manage-profile",
+    path: "manage-profile", 
     element: <ManageProfile />,
   },
   {

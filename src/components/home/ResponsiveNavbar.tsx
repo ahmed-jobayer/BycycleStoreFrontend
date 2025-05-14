@@ -230,13 +230,13 @@ const ResponsiveNavbar = () => {
               accountMenuOpen
                 ? "translate-y-0 opacity-100 z-[1]"
                 : "translate-y-[10px] opacity-0 z-[-1]"
-            } bg-white w-max rounded-md absolute top-[45px] right-0 p-[10px] flex flex-col transition-all duration-300 gap-[5px] shadow-lg z-50 shadow-purple-600`}
+            } bg-white w-max rounded-md absolute top-[45px] right-0 p-[10px] flex flex-col transition-all duration-300 gap-[5px] shadow-lg z-50 `}
           >
-            <span className="px-4 py-1.5 bg-[#e4d4f4] text-[#7828c8] rounded-full text-[0.9rem] font-[500] flex items-center gap-2">
+            <span className="px-2 py-1.5 bg-white text-green rounded-full text-[0.9rem] font-[500] flex items-center gap-2">
               {user.role === "admin" ? (
-                <GrUserAdmin className="text-[1.3rem] text-[#7828c8]" />
+                <GrUserAdmin className="text-[1.3rem] text-green" />
               ) : (
-                <FiUser className="text-[1.3rem] text-[#7828c8]" />
+                <FiUser className="text-[1.3rem] text-green" />
               )}
               {user.role === "admin" ? "Admin" : "Customer"}
             </span>

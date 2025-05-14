@@ -17,7 +17,7 @@ const userRole = {
   ADMIN: "admin",
   USER: "customer",
 };
-
+ 
 const Sidebar = () => {
   const token = useAppSelector(useCurrentToken);
 
@@ -45,8 +45,8 @@ const Sidebar = () => {
     <Sider
       breakpoint="lg"
       collapsedWidth="0"
-      style={{ height: "100vh", position: "sticky", top: "0", left: "0" }}
-      className="z-[1]"
+      style={{ height: "100vh", position: "sticky", top: "0", left: "0", backgroundColor: "#368c3c" }}
+      className="z-[1] bg-gdarkGreen"
     >
       <div
         style={{
@@ -57,12 +57,13 @@ const Sidebar = () => {
           alignItems: "center",
         }}
       >
-        <Link to={"/"} className="font-semibold text-xl">
-          🚲 Bicycle
+        <Link to={"/"} className="font-semibold text-xl ">
+          🚲 <span className="text-offWhite">Bicycle</span>
         </Link>
       </div>
       <Menu
-        theme="dark"
+        // theme="dark"
+        style={{backgroundColor: "#368c3c" }}
         mode="inline"
         defaultSelectedKeys={["1"]}
         items={sidebarItems}

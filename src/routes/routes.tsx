@@ -41,7 +41,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "about",
-        element: <AboutusLayout />,
+        element: <AboutusLayout />, 
       },
       {
         path: "cart",

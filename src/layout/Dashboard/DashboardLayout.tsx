@@ -7,7 +7,6 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 // antd layout destructure
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const { Content, Footer } = Layout;
 
 function DashboardLayout() {
@@ -70,7 +69,7 @@ function DashboardLayout() {
             </div>
           </Content>
           <Footer className="text-center hidden md:block">
-            Bicycle ©{new Date().getFullYear()} - Created by Promise Squad
+            Bicycle ©{new Date().getFullYear()} 
           </Footer>
         </Layout>
       </Layout>

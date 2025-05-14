@@ -116,8 +116,7 @@ const UserManagement = () => {
       title: "Make Admin",
       key: "makeAdmin",
       render: (_: any, record: any) => (
-        <Button
-          type="primary"
+        <Button className=" !border-green !text-green"
           size="small"
           disabled={record.role === "admin"}
           onClick={() => {
@@ -145,7 +144,7 @@ const UserManagement = () => {
   ];
 
   return (
-    <div className="p-4  border border-purple-600 shadow-purple-600 shadow-lg rounded">
+    <div className="p-4  border shadow-lg rounded">
       <Table
         loading={isLoading}
         columns={columns}

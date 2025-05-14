@@ -78,13 +78,13 @@ const ManageOrders = () => {
     }
   };
 
-  const handleUpdateOrder = async (orderId: string, status: ShippingStatus) => {
+  const handleUpdateOrder = async (orderId: string, shippingStatus: ShippingStatus) => {
     // console.log({ orderId, status });
     if (selectedOrderId && selectedStatus) {
       try {
         const result = await updateOrder({
           orderId: orderId,
-          updateData: { status },
+          updateData: { shippingStatus },
         });
         console.log(result)
         if (result?.data?.success) {
@@ -112,16 +112,18 @@ const ManageOrders = () => {
   }
   if (isError) return <p>Failed to load orders.</p>;
 
+  // console.log(orders);
+
   return (
-    <div className="lg:w-2/3 p-6 border-2 shadow-md border-purple-600 shadow-purple-600 rounded-2xl overflow-x-auto">
+    <div className="lg:w-2/3 p-6 border-2 shadow-md rounded-2xl overflow-x-auto">
       <h2 className="text-center font-bold text-3xl mb-14">
-        All of your Orders
+        All Orders
       </h2>
 
       {/* tables of lists */}
       <Table>
         <TableCaption className="mt-8">
-          A list of your recent Orders
+          A list of recent Orders
         </TableCaption>
         {/* header */}
         <TableHeader className="text-l">
@@ -132,7 +134,7 @@ const ManageOrders = () => {
             <TableHead>Update Shipping Status</TableHead>
             <TableHead>Quantity</TableHead>
             <TableHead>Amount</TableHead>
-            <TableHead className="text-center">Delete</TableHead>
+            <TableHead className="text-center ">Delete</TableHead>
           </TableRow>
         </TableHeader>
         {/* body */}
@@ -148,7 +150,7 @@ const ManageOrders = () => {
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button className="cursor-pointer" variant="outline">
-                      {order?.status}
+                      {order?.shippingStatus}
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="p-2">
@@ -175,7 +177,7 @@ const ManageOrders = () => {
               <TableCell className="text-right">
                 <AlertDialog>
                   <AlertDialogTrigger asChild>
-                    <Button className="bg-purple-600">Delete</Button>
+                    <Button className={`!bg-white cursor-pointer text-red-700 !border-green border ${order.isDeleted ? "text-red-700" : "text-black" }`}>{order.isDeleted ? "Deleted" : "Delete"}</Button>
                   </AlertDialogTrigger>
                   <AlertDialogContent>
                     <AlertDialogHeader>
@@ -234,7 +236,7 @@ const ManageOrders = () => {
             <AlertDialogTitle>Confirm Status Update</AlertDialogTitle>
             <AlertDialogDescription>
               Are you sure you want to change the status to{" "}
-              <span className="font-semibold text-purple-600">
+              <span className="font-semibold text-gdarkGreen">
                 {selectedStatus}
               </span>
               ?
@@ -243,7 +245,7 @@ const ManageOrders = () => {
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
             <AlertDialogAction
-              className="bg-purple-600 hover:bg-purple-700"
+              className="bg-green hover:bg-green"
               onClick={() => handleUpdateOrder(selectedOrderId, selectedStatus as ShippingStatus)}
             >
               Confirm

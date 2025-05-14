@@ -28,7 +28,7 @@ const ViewOrders = () => {
     { id: userId },
     { skip: !userId }
   );
-  // console.log(data);
+  console.log(data);
   useEffect(() => {
     if (data?.data) {
       setOrders(data.data.data);
@@ -50,7 +50,7 @@ const ViewOrders = () => {
   if (isError) return <p>Failed to load orders.</p>;
 
   return (
-    <div className="lg:w-2/3 p-6 border-2 shadow-md border-purple-600 shadow-purple-600 rounded-2xl ">
+    <div className="lg:w-2/3 p-6 border-2 shadow-md rounded-2xl ">
       <h2 className="text-center font-bold text-3xl mb-14">
         All of your Orders
       </h2>
@@ -74,7 +74,7 @@ const ViewOrders = () => {
                 {order.products[0].product.name}
               </TableCell>
               <TableCell>{order.paymentStatus}</TableCell>
-              <TableCell>{order.status}</TableCell>
+              <TableCell>{order.shippingStatus}</TableCell>
               <TableCell className="text-right">{order.totalPrice}</TableCell>
             </TableRow>
           ))}

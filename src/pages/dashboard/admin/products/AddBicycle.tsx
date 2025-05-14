@@ -62,7 +62,7 @@ const AddBicycle = () => {
 
   return (
     <div className="flex justify-center items-center w-full">
-      <div className="p-8 border rounded shadow-md border-purple-600 shadow-purple-600 w-full max-w-4xl">
+      <div className="p-8 border rounded shadow-md w-full max-w-4xl">
       <Title
         level={2}
         className="text-center mb-6 text-2xl sm:text-3xl md:text-4xl"

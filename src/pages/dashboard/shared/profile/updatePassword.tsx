@@ -47,7 +47,7 @@ const UpdatePassword = () => {
 
   return (
     <div className="flex justify-center items-center h-screen">
-      <div className="p-8 border rounded shadow-md border-purple-600 shadow-purple-600">
+      <div className="p-8 border rounded shadow-md ">
         <Form
           form={form}
           name="change-password"

@@ -74,11 +74,11 @@ const PaymentDetails = () => {
         user: userId as string,
         totalPrice: grandTotal as number,
         paymentStatus: 'UNPAID',
-        shippinhStatus: 'PENDING'
+        shippingStatus: 'PENDING'
 
       };
 
-      // console.log(orderData);
+      console.log(orderData);
 
       //* Perform order submission logic (e.g., sending data to an API)
       const response = await axiosCommon.post(
@@ -104,6 +104,7 @@ const PaymentDetails = () => {
       toast.error(error.message, { id: orderLoading });
     }
   };
+
 
   return (
     <div className="border-2 border-white bg-background brightness-105 rounded-md col-span-4 h-fit p-5">

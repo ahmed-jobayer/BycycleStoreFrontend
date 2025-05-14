@@ -12,7 +12,7 @@ import { useEffect } from "react";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { toast } from "sonner";
 
-const { Title } = Typography;
+const { Title } = Typography; 
 const { Option } = Select;
 
 const ManageProfile = () => {
@@ -61,7 +61,7 @@ const ManageProfile = () => {
 
   return (
     <div className="flex justify-center items-center w-full">
-      <div className="p-8 border rounded shadow-md border-purple-600 shadow-purple-600 w-full max-w-2xl">
+      <div className="p-8 border rounded shadow-md  w-full max-w-2xl">
         <Title level={3} className="text-center mb-6">
           Update Account
         </Title>
