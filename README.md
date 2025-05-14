@@ -20,7 +20,7 @@ This is the frontend of the Bicycle Store application, a responsive e-commerce p
 - React Router
 - Ant Design, Tailwind CSS
 - Axios
-- SurjoPay (or other payment gateway)
+- SSLCOMMERZ
 - JWT Authentication
 
 ## 🚀 Getting Started
