@@ -10,7 +10,7 @@ const AllBicyclesLayout = () => {
       </div>
       <Footer />
     </div>
-  );
+  ); 
 };
 
 export default AllBicyclesLayout;

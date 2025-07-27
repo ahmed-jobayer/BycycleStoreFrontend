@@ -11,7 +11,7 @@ const AllBicycleFilter = ({ handleChange }: AllBicycleFilterProps) => {
 
   return (
     <div className="p-6 bg-white shadow-md rounded-lg w-full"> 
-      <h2 className="text-xl font-semibold mb-4">Filters</h2>
+      <h2 className="text-xl font-semibold mb-4">Filters</h2> 
 
       {/* Search Input */}
       <div className="mb-4">

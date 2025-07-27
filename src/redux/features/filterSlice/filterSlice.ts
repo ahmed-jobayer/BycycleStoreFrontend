@@ -14,7 +14,7 @@ interface FilterState {
 const initialState: FilterState = {
   search: "",
   priceRange: [0, 10000],
-  type: "",
+  type: "", 
   brand: "",
   availability: false,
 };

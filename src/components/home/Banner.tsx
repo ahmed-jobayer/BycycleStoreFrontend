@@ -31,7 +31,7 @@ const Banner = () => {
         // toast
         toast.error(error.message);
         throw error;
-      }
+      } 
     },
   });
 

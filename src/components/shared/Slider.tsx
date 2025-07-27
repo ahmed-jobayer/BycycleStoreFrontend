@@ -22,7 +22,7 @@ const Slider: React.FC<ApiResponseWithIsPending> = ({ data, isPending }) => {
 
   return ( 
     <Carousel
-      autoplay={{ dotDuration: true }}
+      autoplay={{ dotDuration: true }} 
       autoplaySpeed={2000}
       arrows={true}
       fade={true}

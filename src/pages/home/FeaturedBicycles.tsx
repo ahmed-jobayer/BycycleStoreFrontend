@@ -13,7 +13,7 @@ const FeaturedBicycles = () => {
 
   // navigation
   const navigate = useNavigate();
-
+ 
   // fetching the featured Bicycles
   const { isPending, data } = useQuery({
     queryKey: ["featuredBicycles"],
@@ -42,7 +42,7 @@ const FeaturedBicycles = () => {
   // handle click to navigate to #featured
   const handleClick = () => {
     navigate("/AllBicycles");
-    toast.success("Navigating to Featured Section!");
+    toast.success("Navigating to All Bicycle");
   };
 
   // If the data is still loading

@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { toast } from "sonner";
 import AllBicycleFilter from "./AllBicycleFilter";
-
+ 
 const AllBicycles = () => {
   const dispatch = useDispatch(); // Redux dispatch function
   const location = useLocation(); // To get URL query params
