@@ -15,7 +15,6 @@ const Banner = () => {
     queryKey: ["featuredBicycles"],
     queryFn: async () => {
       try {
-        // const response = await axios(`${import.meta.env.VITE_SERVER}/api/products`);
         const response = await axiosCommon(`/api/products`);
         // console.log("response ==>",response);
 

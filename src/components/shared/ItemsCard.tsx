@@ -36,9 +36,7 @@ export interface ItemsCardProps {
 const ItemsCard: React.FC<ItemsCardProps> = ({ data, isPending }) => {
   // loading state
   const [loading, _setLoading] = useState<boolean>(isPending);
-  const dispatch = useAppDispatch()
-
-
+  const dispatch = useAppDispatch();
 
   // destructure items
   const {
@@ -58,23 +56,22 @@ const ItemsCard: React.FC<ItemsCardProps> = ({ data, isPending }) => {
   const handleAddToCart = (product: IProduct) => {
     dispatch(addProduct(product));
     toast.success("Item Added to The Cart");
-  }; 
-
+  };
 
   // button for card
   const actions: React.ReactNode[] = [
     <>
       <CustomButton
-        className="w-[90%] !py-2 hover:scale-95 transition-transform duration-300"
+        className="w-[90%] !py-2 transition-transform duration-300"
         handleAnything={(e) => {
           e.preventDefault(); //  Prevent <Link> default nav
           e.stopPropagation(); //  Prevents the Link from triggering / event bubbling
-          handleAddToCart(data );
+          handleAddToCart(data);
           // navigate(`/checkout/${_id}`);
         }}
         textName={
           <div className="flex gap-1 justify-content-center items-center ">
-            <ShoppingCart  />
+            <ShoppingCart />
             Add to Cart
           </div>
         }
@@ -102,9 +99,13 @@ const ItemsCard: React.FC<ItemsCardProps> = ({ data, isPending }) => {
             className="w-full "
           >
             {!Img ? (
-              <img alt="Bicycle" src={cycle} className="mb-6 w-full border " />
+              <img alt="Bicycle" src={cycle} className="mb-6 w-full  " />
             ) : (
-              <img alt="Bicycle" src={Img} className="mb-6 w-full h-40 object-cover" />
+              <img
+                alt="Bicycle"
+                src={Img}
+                className="mb-6 w-full h-40 object-cover hover:scale-110 transition-transform duration-500"
+              />
             )}
 
             <Card.Meta

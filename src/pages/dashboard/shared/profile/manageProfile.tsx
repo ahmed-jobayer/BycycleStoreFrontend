@@ -49,7 +49,7 @@ const ManageProfile = () => {
         <Loading />
       </div>
     );
-  }
+  } 
 
   if (isError || !data) {
     return (
