@@ -4,6 +4,7 @@ import Hero from "../../components/home/Hero";
 import ResponsiveNavbar from "../../components/home/ResponsiveNavbar";
 import FeaturedBicycles from "./FeaturedBicycles";
 import ShopByCategory from "./ShopByCatwgory";
+import WhyChooseUse from "./WhyChooseUs";
 
 const Home = () => {
   return (
@@ -15,7 +16,9 @@ const Home = () => {
           <Banner />
           <FeaturedBicycles />
           <ShopByCategory />
+          <WhyChooseUse/>
           <Testimonial />
+          <WhyChooseUse />
         </div>
       </div>
     </div>
