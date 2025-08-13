@@ -16,7 +16,6 @@ const Home = () => {
           <Banner />
           <FeaturedBicycles />
           <ShopByCategory />
-          <WhyChooseUse/>
           <Testimonial />
           <WhyChooseUse />
         </div>

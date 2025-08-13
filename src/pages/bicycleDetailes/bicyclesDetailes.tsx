@@ -35,7 +35,7 @@ const BicyclesDetailPage = () => {
         {/* Left Column: Product Image */}
         <Col xs={24} sm={12} md={8}>
           <Image
-            src={productData?.Img}
+            src={productData?.Img} 
             alt={productData?.name}
             className="w-full rounded-xl shadow-lg"
           />
